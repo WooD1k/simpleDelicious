@@ -16,6 +16,9 @@
         },
         logout: function() {
             Ti.API.info("called FB.logout()");
+        },
+        getAuthResponse: function() {
+        	Ti.API.info('called FB.getAuthResponse()');
         }
     };
     Ti.include("parse-1.2.16.js");
@@ -39,45 +42,29 @@
         var promise = new Parse.Promise(), handled = !1, xhr = Ti.Network.createHTTPClient({
             timeout: 5e3
         });
-
-        xhr.onload = function() {
-            if (handled)
-                return;
-            handled = true;
-            if (xhr.status >= 200 && 300 > xhr.status) {
-                Ti.API.info('xhr.readyState: ', xhr.readyState);
-                Ti.API.info('xhr.status: ', xhr.status);
-                var response;
-                try {
-                    response = JSON.parse(xhr.responseText);
-                    Ti.API.info('response: ', response);
-                    Ti.API.info('responseText: ', xhr.responseText);
-                } catch (e) {
-                    promise.reject(e);
-                }
-                response && promise.resolve(response, xhr.status, xhr);
-            } else {
-                promise.reject(xhr);
+        xhr.onreadystatechange = function() {
+            if (4 === xhr.readyState) {
+                if (handled) return;
+                handled = !0;
+                if (xhr.status >= 200 && 300 > xhr.status) {
+                    var response;
+                    try {
+                        response = JSON.parse(xhr.responseText);
+                    } catch (e) {
+                        promise.reject(e);
+                    }
+                    response && promise.resolve(response, xhr.status, xhr);
+                } else promise.reject(xhr);
             }
         };
-
-        xhr.onerror = function(e) {
-            Ti.API.info('on error:' + e);
-            if (handled)
-                return;
-            handled = true;
-            promise.reject(xhr);
-        };
-
         xhr.open(method, url, !0);
         xhr.setRequestHeader("Content-Type", "text/plain");
         Parse._isNode && xhr.setRequestHeader("User-Agent", "Parse/" + Parse.VERSION + " (NodeJS " + process.versions.node + ")");
-        Ti.API.info('data: ', data);
         xhr.send(data);
         return promise._thenRunCallbacks(options);
     };
 
-    Parse.initialize('VDiaJuQU9ZQZImmFbzQzPxgo8dZlpe1EwIAuXYhr', 'nNoBud95SXA8k790TzLkshHuV4hGLheZ4op9hp9A');
+    Parse.initialize("VDiaJuQU9ZQZImmFbzQzPxgo8dZlpe1EwIAuXYhr", "nNoBud95SXA8k790TzLkshHuV4hGLheZ4op9hp9A");
     Parse.FacebookUtils.init();
     return Parse;
 };

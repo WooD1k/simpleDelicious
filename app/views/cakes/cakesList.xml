@@ -1,9 +1,9 @@
 <Alloy>
 	<NavigationWindow module="xp.ui">
-		<Window>
-			<View class="container" backgroundColor="red">
-
-			</View>
+		<Window titleid="SimpleDeliciousTitile" layout="vertical">
+			<TableView id="cakesTable" dataCollection="cakesModel" dataTransform="dataTransformFunction">
+				<Require src="cakes/cakesRow" />
+			</TableView>
 		</Window>
 	</NavigationWindow>
 </Alloy>

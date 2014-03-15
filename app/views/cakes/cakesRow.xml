@@ -1,0 +1,9 @@
+<Alloy>
+	<TableViewRow id="row" hasChild="true" onClick="doSelectCake" layout="horizontal">
+		<ImageView id="check" width="50dp" height="50dp" />
+		<View layout="vertical" height="Ti.UI.SIZE">
+			<Label id="cakeName" width="Ti.UI.FILL" text="{cakeName}" />
+			<Label id="cakeShortDesc" width="Ti.UI.FILL" text="{cakeShortDesc}" />
+		</View>
+	</TableViewRow>
+</Alloy>
