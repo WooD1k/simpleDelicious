@@ -5,7 +5,9 @@ exports.definition = {
 			cakeName : "text",
 			cakeShortDesc : "text",
 			cakeDesc : "text",
-			cakePicUrl : "text"
+			cakeSmallPicUrl : "text",
+			cakePicUrl : "text",
+			cakePrice : "text"
 		},
 		adapter : {
 			type : "sql",
