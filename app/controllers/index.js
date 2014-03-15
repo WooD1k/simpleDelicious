@@ -12,7 +12,9 @@ cakesItems.find({
 				cakeName : cakes[i].get("cakeName"),
 				cakeShortDesc : cakes[i].get("cakeShortDesc"),
 				cakeDesc : cakes[i].get("cakeDesc"),
-				cakePicUrl : cakes[i].get("cakePicUrl")
+				cakeSmallPicUrl : cakes[i].get("cakeSmallPicUrl"),
+				cakePicUrl : cakes[i].get("cakePicUrl"),
+				cakeScakePricemallPicUrl : cakes[i].get("cakePrice")
 			});
 
 			cakesModel.add(cakeItem);
