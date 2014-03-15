@@ -3,8 +3,10 @@ var Parse = require("TiParse")();
 var cakesModel = Alloy.Collections.cakesModel;
 cakesModel.fetch();
 
-function getCakes(argument) {
-
+function doSelectItem(e) {
+	Ti.API.info('item clicked: ' + JSON.stringify(e));
+	var item = e.section.getItemAt(e.itemIndex);
+	Ti.API.info('item: ' + JSON.stringify(item));
 }
 
 function dataTransformFunction(model) {
