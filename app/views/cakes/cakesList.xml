@@ -1,0 +1,9 @@
+<Alloy>
+	<NavigationWindow module="xp.ui">
+		<Window>
+			<View class="container" backgroundColor="red">
+
+			</View>
+		</Window>
+	</NavigationWindow>
+</Alloy>
