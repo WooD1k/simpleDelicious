@@ -1,4 +1,15 @@
 
-".container" : {
-  
+"#cakeName": {
+	font: {
+		fontSize: '16pt'
+	},
+	horizontalWrap: false,
+	ellipsize: true
+},
+"#cakeShortDesc": {
+	font: {
+		fontSize: '12pt'
+	},
+	horizontalWrap: false,
+	ellipsize: true
 }
