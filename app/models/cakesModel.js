@@ -28,7 +28,6 @@ exports.definition = {
 		_.extend(Collection.prototype, {
 
 			deleteAll : function() {
-
 				var collection = this;
 
 				var sql = "DELETE FROM " + collection.config.adapter.collection_name;
@@ -36,8 +35,8 @@ exports.definition = {
 				db.execute(sql);
 				db.close();
 
+				collection.fetch();
 				collection.trigger('sync');
-
 			}
 		});
 
